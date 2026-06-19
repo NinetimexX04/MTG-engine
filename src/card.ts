@@ -1,3 +1,18 @@
+interface ScryfallCard {
+    name: string;
+    mana_cost: string;
+    type_line: string;
+    id: string;
+    oracle_id: string;
+    oracle_text?: string;
+    power?: string;
+    toughness?: string;
+    keywords?: string[];
+    colors?: string[];
+    color_identity?: string[];
+    cmc?: number;
+}
+
 export class Card {
     name: string;
     manaCost?: string;
@@ -60,7 +75,7 @@ export class Card {
         return this.colors?.includes(color) ?? false;
     }
 
-    static fromScryfallData(data: any): Card {
+    static fromScryfallData(data: ScryfallCard): Card {
         const card = new Card(data.name, data.mana_cost, data.type_line, data.id, data.oracle_id);
         card.oracleText = data.oracle_text;
         card.power = data.power ? parseInt(data.power) : undefined;
