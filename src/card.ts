@@ -13,7 +13,19 @@ export class Card {
     oracleId: string;
     instanceId: string;
 
-    constructor(name: string, manaCost: string, typeLine: string, id: string, oracleId: string) {
+    constructor(name: string, manaCost: string | undefined, typeLine: string, id: string, oracleId: string) {
+        if (!name) {
+            throw new Error('Card name is required.');
+        }
+        if (!typeLine) {
+            throw new Error('Card type line is required.');
+        }
+        if (!id) {
+            throw new Error('Card ID is required.');
+        }
+        if (!oracleId) {
+            throw new Error('Card oracle ID is required.');
+        }
         this.name = name;
         this.manaCost = manaCost;
         this.typeLine = typeLine;
@@ -61,7 +73,7 @@ export class Card {
     }
 
     isCreature(): boolean {
-        return this.typeLine.includes('Creature');
+        return this.getCardType() === 'Creature';
     }
 
 }
