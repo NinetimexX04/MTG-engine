@@ -47,10 +47,5 @@ export class Deck {
         const topCards = this.cards.splice(-amount, amount);
         this.cardAmount = this.cards.length;
         return topCards;
-        }
-    }
-
-    
-
     }
 }
