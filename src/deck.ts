@@ -28,24 +28,47 @@ export class Deck {
         }
     }
 
-    drawCard(amount: number = 1): Card[] {
-        if (this.cards.length === 0) {
-            throw new Error('Cannot draw a card from an empty deck.');
+    removeTop(amount: number = 1): Card[] {
+        if (!Number.isInteger(amount) || amount <= 0) {
+            throw new Error('Amount must be a positive integer.');
         }
         if (amount > this.cards.length) {
-            throw new Error('Not enough cards to draw the requested amount.');
-        }
-        const drawnCards = this.cards.splice(-amount, amount);
-        this.cardAmount = this.cards.length;
-        return drawnCards;
-    }
-
-    removeTopCards(amount: number = 1): Card[] {
-        if (amount > this.cards.length){
             throw new Error('Not enough cards to remove the requested amount.');
         }
-        const topCards = this.cards.splice(-amount, amount);
+
+        const removedCards = this.cards.splice(this.cards.length - amount, amount);
         this.cardAmount = this.cards.length;
-        return topCards;
+        return removedCards;
     }
+
+    removeBottom(amount: number = 1): Card[] {
+        if (!Number.isInteger(amount) || amount <= 0) {
+            throw new Error('Amount must be a positive integer.');
+        }
+        if (amount > this.cards.length) {
+            throw new Error('Not enough cards to remove the requested amount.');
+        }
+
+        const removedCards = this.cards.splice(0, amount);
+        this.cardAmount = this.cards.length;
+        return removedCards;
+    }
+
+    removeAt(index: number, amount: number = 1): Card[] {
+        if (!Number.isInteger(amount) || amount <= 0) {
+            throw new Error('Amount must be a positive integer.');
+        }
+        if (amount > this.cards.length) {
+            throw new Error('Not enough cards to remove the requested amount.');
+        }
+        if (!Number.isInteger(index) || index < 0 || index >= this.cards.length) {
+            throw new Error('Please provide a valid index within the range of cards.');
+        }
+
+        const removedCards = this.cards.splice(index, amount);
+        this.cardAmount = this.cards.length;
+        return removedCards;
+    }
+
+    
 }
