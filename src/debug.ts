@@ -6,7 +6,7 @@ async function getCard(name: string): Promise<Card> {
     return Card.fromScryfallData(card);
 }
 
-const card_object = await getCard('Forest');
+const card_object = await getCard('Arcane signet');
 
 console.log(card_object);
 console.log(card_object.getCardInfo());
