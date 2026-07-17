@@ -1,11 +1,12 @@
 import { Card } from './card.js';
+import { CardPile } from './cardpile.js';
 
-export class Deck {
+export class Deck extends CardPile {
     static readonly STARTING_CARDS_AMOUNT_COMMANDER = 100;
-    cards: Card[];
-    cardAmount: number;
 
     constructor(cards: Card[]) {
+        super();
+
         if (!Array.isArray(cards)) {
             throw new Error('Deck cards must be an array.');
         }
@@ -18,7 +19,6 @@ export class Deck {
             throw new Error(`Deck must contain ${Deck.STARTING_CARDS_AMOUNT_COMMANDER} cards.`);
         }
         this.cards = cards;
-        this.cardAmount = cards.length;
     }
 
     shuffle(): void {
@@ -27,48 +27,4 @@ export class Deck {
             [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
         }
     }
-
-    removeTop(amount: number = 1): Card[] {
-        if (!Number.isInteger(amount) || amount <= 0) {
-            throw new Error('Amount must be a positive integer.');
-        }
-        if (amount > this.cards.length) {
-            throw new Error('Not enough cards to remove the requested amount.');
-        }
-
-        const removedCards = this.cards.splice(this.cards.length - amount, amount);
-        this.cardAmount = this.cards.length;
-        return removedCards;
-    }
-
-    removeBottom(amount: number = 1): Card[] {
-        if (!Number.isInteger(amount) || amount <= 0) {
-            throw new Error('Amount must be a positive integer.');
-        }
-        if (amount > this.cards.length) {
-            throw new Error('Not enough cards to remove the requested amount.');
-        }
-
-        const removedCards = this.cards.splice(0, amount);
-        this.cardAmount = this.cards.length;
-        return removedCards;
-    }
-
-    removeAt(index: number, amount: number = 1): Card[] {
-        if (!Number.isInteger(amount) || amount <= 0) {
-            throw new Error('Amount must be a positive integer.');
-        }
-        if (amount > this.cards.length) {
-            throw new Error('Not enough cards to remove the requested amount.');
-        }
-        if (!Number.isInteger(index) || index < 0 || index >= this.cards.length) {
-            throw new Error('Please provide a valid index within the range of cards.');
-        }
-
-        const removedCards = this.cards.splice(index, amount);
-        this.cardAmount = this.cards.length;
-        return removedCards;
-    }
-
-    
 }
