@@ -1,11 +1,25 @@
-import { Deck } from './deck.ts'
+import { Deck } from "./deck.js";
+import { Exile } from "./exile.js";
+import { Graveyard } from "./graveyard.js";
+import { Health } from "./health.js";
+import { Manapool } from "./manapool.js";
+import { Card } from "./card.js"
 
 export class Player {
-    deck: Deck[];
-    
+    health: Health;
+    deck: Deck;
+    manapool: Manapool;
+    graveyard: Graveyard;
+    exile: Exile;
+    insance_ID: string;
 
-    constructor(
-
-    )
+    constructor(cards: Card[]) {
+        this.deck = new Deck(cards);
+        this.health = new Health();
+        this.manapool = new Manapool();
+        this.graveyard = new Graveyard();
+        this.exile = new Exile();
+        this.insance_ID = crypto.randomUUID();
+    }
 
 }
