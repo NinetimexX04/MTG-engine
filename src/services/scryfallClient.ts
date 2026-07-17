@@ -2,7 +2,7 @@
 const headers = {
     'Accept': 'application/json',
     'User-Agent': 'MTG-engine/1.0.0'
-};
+}
 
 export async function getCardByName(name: string): Promise<any> {
     const response = await fetch(`https://api.scryfall.com/cards/named?exact=${encodeURIComponent(name)}`, {
@@ -27,4 +27,3 @@ export async function getCardsBySet(set: string): Promise<any> {
 
     return response.json();
 }
-
