@@ -1,7 +1,7 @@
 
 const headers = {
-    "Accept": "application/json",
-    "User-Agent": "MTG-engine/1.0.0"
+    'Accept': 'application/json',
+    'User-Agent': 'MTG-engine/1.0.0'
 };
 
 export async function getCardByName(name: string): Promise<any> {
