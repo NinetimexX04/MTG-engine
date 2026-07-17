@@ -1,49 +1,39 @@
 export class Health {
     static readonly DEFAULT_HEALTH = 40;
-    currentHealth: number;
+    private health: number;
     
     constructor(currentHealth: number = Health.DEFAULT_HEALTH) {
-        if (!Number.isFinite(currentHealth) || currentHealth < 0) {
-            throw new Error("Current health must be a non-negative number.");
+        if (!Number.isInteger(currentHealth) || currentHealth < 0) {
+            throw new Error('Current health must be a non-negative whole number.');
         }
-        this.currentHealth = currentHealth;
+        this.health = currentHealth;
     }
     
     reduceHealth(amount: number, roundUp: boolean = true): void {
-        if (!Number.isFinite(amount)) {
-            throw new Error("Amount must be a number.");
+        if (!Number.isFinite(amount) || amount < 0) {
+            throw new Error('Amount must be a non-negative number.');
         }
-        if (roundUp) {
-            amount = Math.ceil(amount);
-        } else {
-            amount = Math.floor(amount);
-        }
-        this.currentHealth = Math.max(this.currentHealth - Math.abs(amount), 0);
+        amount = roundUp ? Math.ceil(amount) : Math.floor(amount);
+        this.health = Math.max(this.health - amount, 0);
     }
     
     increaseHealth(amount: number, roundUp: boolean = true): void {
-        if (!Number.isFinite(amount)) {
-            throw new Error("Amount must be a number.");
+        if (!Number.isFinite(amount) || amount < 0) {
+            throw new Error('Amount must be a non-negative number.');
         }
-        if (roundUp) {
-            amount = Math.ceil(amount);
-        } else {
-            amount = Math.floor(amount);
-        }
-        this.currentHealth += Math.abs(amount);
+        amount = roundUp ? Math.ceil(amount) : Math.floor(amount);
+        this.health += amount
     }
     
-    getCurrentHealth(): number {
-        return this.currentHealth;
+    get currentHealth(): number {
+        return this.health;
     }
 
-    setHealth(amount: number): void{
-        if (amount >= 0) {
-            this.currentHealth = amount;
-        } 
-        else {
-            throw new Error("Amount must be a non-negative number.");
+    set healthAmount(amount: number) {
+        if (amount < 0 || !Number.isInteger(amount)) {
+            throw new Error('Amount must be a non-negative whole number.');
         }
+        this.health = amount;
     }
     
 }
