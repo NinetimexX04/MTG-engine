@@ -1,7 +1,16 @@
 import { Card } from './card.js';
 
 export class CardPile {
-    cards: Card[] = [];
+    cards: Card[];
+    maxCardAmount?: number;
+
+    constructor(maxCardAmount?: number, cards: Card[] = []) {
+         if (!Array.isArray(cards)) {
+            throw new Error('Cards must be an array.');
+        }
+        this.maxCardAmount = maxCardAmount;
+        this.cards = cards;
+    }
 
     removeTop(amount: number = 1): Card[] {
         if (!Number.isInteger(amount) || amount <= 0) {
@@ -71,6 +80,15 @@ export class CardPile {
     }
 
     addCards(cards: Card[]): void {
+        if (!Array.isArray(cards)) {
+            throw new Error('cards must be an array');
+        }
+        if (cards.length === 0) {
+            throw new Error('cards must contain at least one value');
+        }
+        if (this.maxCardAmount !== undefined && cards.length + this.cards.length > this.maxCardAmount) {
+            throw new Error(`Cannot exceed the maximum of ${this.maxCardAmount} cards`);
+        }
         this.cards.push(...cards);
     }
 
