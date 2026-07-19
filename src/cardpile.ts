@@ -5,7 +5,7 @@ export class CardPile {
     maxCardAmount?: number;
 
     constructor(maxCardAmount?: number, cards: Card[] = []) {
-         if (!Array.isArray(cards)) {
+        if (!Array.isArray(cards)) {
             throw new Error('Cards must be an array.');
         }
         this.maxCardAmount = maxCardAmount;
