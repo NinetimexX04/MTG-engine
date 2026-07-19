@@ -30,6 +30,7 @@ export class Card {
     instanceId: string;
     card_image: URL;
 
+
     constructor(
         name: string, 
         manaCost: string | null = null,
@@ -89,19 +90,6 @@ export class Card {
         this.card_image = card_image;
     }
 
-    getCardInfo(): string {
-        return `${this.name} - ${this.typeLine}`;
-    }
-
-    getCardType(): string {
-        return this.typeLine.split(' — ')[0].trim();
-    }
-
-    getCardSubtypes(): string[] {
-        const subtypes = this.typeLine.split(' — ')[1];
-        return subtypes ? subtypes.trim().split(' ') : [];
-    }
-
     hasCardSubType(subtype: string): boolean {
         return this.getCardSubtypes()
         .some(s => s.toLowerCase() === subtype.toLowerCase());
@@ -134,7 +122,22 @@ export class Card {
         return card;
     }
 
-    isCreature(): boolean {
-        return this.getCardType() === 'Creature';
+    get CardInfo(): string {
+        return `${this.name} - ${this.typeLine}`;
     }
+
+    get CardType(): string {
+        return this.typeLine.split(' — ')[0].trim();
+    }
+
+    get CardSubtypes(): string[] {
+        const subtypes = this.typeLine.split(' — ')[1];
+        return subtypes ? subtypes.trim().split(' ') : [];
+    }
+
+    get isCreature(): boolean {
+        return this.CardType === 'Creature';
+    }
+
+   
 }
