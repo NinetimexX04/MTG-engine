@@ -1,8 +1,10 @@
+import logo from '../assets/logo.svg'
+
 function Header() {
     return (
         <header>
             <div id='logo'>
-                
+                <img src={logo}/>
             </div>
             <nav>
                 <ul>
