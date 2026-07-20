@@ -1,4 +1,5 @@
 import logo from '../assets/logo.svg'
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -8,8 +9,8 @@ function Header() {
             </div>
             <nav>
                 <ul>
-                    <li><a src='#Home'></a></li>
-
+                    <li><Link to='/'>Home</Link></li>
+                    <li><Link to='/lobby'>Play</Link></li>
                 </ul>
             </nav>
         </header>
