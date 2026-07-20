@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import Card from './components/Card'
 import Header from './components/Header'
+import Home from './components/Home'
+import ChooseDeck from './components/ChooseDeck'
+import Lobby from './components/Lobby'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,7 +14,11 @@ function App() {
     <div className='app-container'>
         <Header />
         <main>
-          <Card url='https://cards.scryfall.io/normal/front/f/3/f353281a-0e56-448f-b41a-beb3949c5f11.jpg?1783928301' name='Twinblade Assassins'/>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/choose-deck' element={<ChooseDeck />} />
+            <Route path='/lobby' element={<Lobby />} />
+          </Routes>
         </main>
     </div>
   )
