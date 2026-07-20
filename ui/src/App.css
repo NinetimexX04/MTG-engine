@@ -91,3 +91,29 @@ main {
     radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
     background-size: 8px 8px;
 }
+
+#lobby button {
+  text-align: center;
+  color: white;
+  background-color: darkblue;
+  border: none;
+  width: 240px;
+  aspect-ratio: 3 / 1;
+  font-size: 24px;
+  padding: .75em 1.5em;
+  border-radius: .5em;
+  white-space: nowrap;
+  margin: 15px
+}
+
+#lobby button:hover {
+    text-decoration: underline;
+}
+
+#lobby h1 {
+  color: black;
+}
+
+#lobby {
+
+}
