@@ -12,9 +12,6 @@ function App() {
         <main>
           <Card url='https://cards.scryfall.io/normal/front/f/3/f353281a-0e56-448f-b41a-beb3949c5f11.jpg?1783928301' name='Twinblade Assassins'/>
         </main>
-        <footer>
-
-        </footer>
     </div>
   )
 }
