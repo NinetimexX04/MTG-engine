@@ -117,3 +117,46 @@ main {
 #lobby {
 
 }
+
+#playerboard {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 4fr 1fr 1fr 1fr;
+}
+
+.zone {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: 170px;
+  min-height: 230px;
+  align-items: flex-start;
+}
+
+#battlefield {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  
+}
+
+#commander-zone {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#graveyard {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+
+#hand {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+
+#library {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
