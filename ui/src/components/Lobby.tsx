@@ -6,14 +6,14 @@ function Lobby() {
 
         if (view === 'join') {
             return (
-                <div id='lobby'>
+                <div id='join'>
                     <input type="text" placeholder="Enter code" />
                 </div>
             );
         }
         else if (view === 'create') {
             return (
-                <div> 
+                <div id='create'> 
                     <p>XYZA31SA9</p>
                 </div>
             );
