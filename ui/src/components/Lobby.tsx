@@ -1,4 +1,6 @@
 import { useState } from "react";
+import PlayerBoard from "./PlayerBoard";
+import ChooseDeck from "./ChooseDeck";
 
 function Lobby() {
    
@@ -14,7 +16,7 @@ function Lobby() {
         else if (view === 'create') {
             return (
                 <div id='create'> 
-                    <p>XYZA31SA9</p>
+                    <ChooseDeck />
                 </div>
             );
         }
