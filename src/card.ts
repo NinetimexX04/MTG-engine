@@ -91,7 +91,7 @@ export class Card {
     }
 
     hasCardSubType(subtype: string): boolean {
-        return this.getCardSubtypes()
+        return this.cardSubtypes
         .some(s => s.toLowerCase() === subtype.toLowerCase());
     }
 
@@ -122,21 +122,21 @@ export class Card {
         return card;
     }
 
-    get CardInfo(): string {
+    get cardInfo(): string {
         return `${this.name} - ${this.typeLine}`;
     }
 
-    get CardType(): string {
+    get cardType(): string {
         return this.typeLine.split(' — ')[0].trim();
     }
 
-    get CardSubtypes(): string[] {
+    get cardSubtypes(): string[] {
         const subtypes = this.typeLine.split(' — ')[1];
         return subtypes ? subtypes.trim().split(' ') : [];
     }
 
     get isCreature(): boolean {
-        return this.CardType === 'Creature';
+        return this.cardType === 'Creature';
     }
 
    
