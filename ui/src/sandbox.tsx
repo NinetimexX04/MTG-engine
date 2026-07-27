@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import { createRoot } from 'react-dom/client'
 import './App.css';
 import './index.css'
-import PlayerBoard from './components/Board';
+import PlayerBoard from './components/PlayerBoard';
 import type { BoardProps } from './components/type';
 
 const mockBoardProps: BoardProps = {
