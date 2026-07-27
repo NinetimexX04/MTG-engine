@@ -1,4 +1,4 @@
-import { Deck } from "./deck.js";
+import { Library } from "./library.js";
 import { Exile } from "./exile.js";
 import { Graveyard } from "./graveyard.js";
 import { Health } from "./health.js";
@@ -7,14 +7,14 @@ import { Card } from "./card.js"
 
 export class Player {
     health: Health;
-    deck: Deck;
+    deck: Library;
     manapool: Manapool;
     graveyard: Graveyard;
     exile: Exile;
     insance_ID: string;
 
     constructor(cards: Card[]) {
-        this.deck = new Deck(cards);
+        this.deck = new Library(cards);
         this.health = new Health();
         this.manapool = new Manapool();
         this.graveyard = new Graveyard();
