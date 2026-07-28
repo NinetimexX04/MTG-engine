@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PlayerBoard from "./PlayerBoard";
 import ChooseDeck from "./ChooseDeck";
 
 function Lobby() {
