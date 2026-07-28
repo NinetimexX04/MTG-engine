@@ -1,5 +1,5 @@
 import Card from "./Card";
-import type { CardData } from "./type";
+import type { CardData } from "../../../types/type";
 
 function Graveyard({ cards }: { cards: CardData[] }) {
     if (!Array.isArray(cards)) {
@@ -8,7 +8,7 @@ function Graveyard({ cards }: { cards: CardData[] }) {
     const lastCard = cards.at(-1);
     return (
         <div id='graveyard' className="zone">
-            {lastCard && <Card url={lastCard.url} name={lastCard.name} />}
+            {lastCard && <Card url={lastCard.url} name={lastCard.name} id={lastCard.instanceId}/>}
         </div>
     );
 }
