@@ -1,17 +1,12 @@
-import type { CardData } from '../ui/src/components/type.js'
+import type { CardData } from '../types/type.js'
 import { getCardByName } from "./services/scryfallClient.js";
 import { Card } from "./card.js";
 import { Commander } from "./commander.js";
 import { Library } from "./library.js";
 import { Graveyard } from "./graveyard.js";
 import { Hand } from "./hand.js";
-import { CardPile } from "./cardpile.js";
-
-type Board = {
-    commanderCard: Commander;
-    libraryCards: Library;
-    handCards: Hand;
-}
+import type { Board } from '../types/type.js';
+import { Exile } from './exile.js';
 
 async function createBoard(cards: CardData[]): Promise<Board> {
     if (!cards || !Array.isArray(cards)) {
@@ -32,9 +27,11 @@ async function createBoard(cards: CardData[]): Promise<Board> {
     const board: Board = {
         commanderCard: commanderCard,
         libraryCards: library,
-        handCards: hand
+        handCards: hand,
+        graveyardCards: new Graveyard(),
+        battlefieldCards: [],
+        exileCards: new Exile()
     }
-
     return board;
 }
 
