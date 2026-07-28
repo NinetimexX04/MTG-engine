@@ -15,10 +15,13 @@ async function createBoard(cards: CardData[]): Promise<Board> {
 
     const libraryCardsArray = [];
     for (let i=0; i < cards.length; i++) {
-        let ScryfallCard = await getCardByName(cards[i].name);
-        let card = Card.fromScryfallData(ScryfallCard);
-        libraryCardsArray.push(card);
+        for (let j=0; i < cards[i].amount; j++) {
+            let ScryfallCard = await getCardByName(cards[i].name);
+            let card = Card.fromScryfallData(ScryfallCard);
+            libraryCardsArray.push(card);
+        }
     }
+
     const library = (new Library(libraryCardsArray));
     const commanderCard = new Commander(library.removeAt(library.cards.length-1, 1)[0])
     library.shuffle();
