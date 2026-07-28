@@ -5,8 +5,9 @@ export class Permanent {
     card: Card;
     isTapped: boolean;
     counters: Counter[];
+    isFlipped: boolean;
 
-    constructor(card: Card, isTapped: boolean = false, counters: Counter[] = []) {
+    constructor(card: Card, isTapped: boolean = false, isFlipped: boolean = false, counters: Counter[] = []) {
         if (!(card instanceof Card)) {
             throw new Error('card must be a valid Card object.')
         }
@@ -18,6 +19,7 @@ export class Permanent {
         }
         this.card = card;
         this.isTapped = isTapped;
+        this.isFlipped = isFlipped;
         this.counters = counters;
     }
 
@@ -25,13 +27,11 @@ export class Permanent {
         this.counters.push(new Counter());
     }
 
-    tap() {
-        //logic
+    tap(bool: boolean = !this.isTapped) {
+        this.isTapped = bool;
     }
 
-    untap() {
-        //logic
+    flip(bool: boolean = !this.isFlipped) {
+        this.isFlipped = bool;
     }
-
-
 }
