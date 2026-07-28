@@ -3,7 +3,7 @@ export class Counter {
     currentCount: number;
     counterName: string;
 
-    constructor(amount: number = 1, counterName: string = 'incremental') {
+    constructor(counterName: string = 'incremental', amount: number = 1, ) {
         if (!Number.isInteger(amount)){
             throw new Error('Amount must be a whole number.');
         }
