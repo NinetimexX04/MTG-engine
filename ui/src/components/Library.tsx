@@ -1,5 +1,5 @@
 import Card from "./Card";
-import type { CardData } from "./type";
+import type { CardData } from "../../../types/type";
 
 function Library({ cards, drawCard }: { cards: CardData[], drawCard: () => void  }) {
     if (!Array.isArray(cards)) {
@@ -8,7 +8,7 @@ function Library({ cards, drawCard }: { cards: CardData[], drawCard: () => void 
     const lastCard = cards.at(-1);
     return (
         <div id='library' className="zone" onClick={drawCard}>
-            {lastCard && <Card url={lastCard.url} name={lastCard.name} />}
+            {lastCard && <Card url={lastCard.url} name={lastCard.name} id={lastCard.instanceId}/>}
         </div>
     );
 }
